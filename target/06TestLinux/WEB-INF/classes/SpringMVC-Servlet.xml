@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 基于注解方式创建对象/组件扫描器 -->
+    <context:component-scan base-package="com.zky.controller"></context:component-scan>
+
+<!--
+    &lt;!&ndash;视图解析器&ndash;&gt;
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+-->
+
+    <!--注册注解驱动-->
+    <mvc:annotation-driven/>
+
+    <!--设置 访问请求 转发到ResourceHttpRequestHandler-->
+    <mvc:resources mapping="/static/**" location="/static/"></mvc:resources>
+
+<!--
+    &lt;!&ndash;声明全局异常处理类&ndash;&gt;
+    <context:component-scan base-package="com.zky.handler"></context:component-scan>
+-->
+
+
+<!--
+    &lt;!&ndash;声明拦截器&ndash;&gt;
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.zky.handler.MyInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+-->
+
+
+</beans>
